@@ -6,6 +6,7 @@ import ButtonPrimary from "shared/Button/ButtonPrimary";
 import MenuBar from "shared/MenuBar/MenuBar";
 import SwitchDarkMode from "shared/SwitchDarkMode/SwitchDarkMode";
 import HeroSearchForm2MobileFactory from "components/HeroSearchForm2Mobile/HeroSearchForm2MobileFactory";
+import ButtonSecondary from "shared/Button/ButtonSecondary";
 
 export interface MainNav1Props {
   className?: string;
@@ -29,7 +30,8 @@ const MainNav1: FC<MainNav1Props> = ({ className = "" }) => {
             <SwitchDarkMode />
             <SearchDropdown />
             <div className="px-1" />
-            <ButtonPrimary href="/login">Sign up</ButtonPrimary>
+            <ButtonPrimary href="/signup">Inscription</ButtonPrimary>
+            <ButtonSecondary href="/login">Connexion</ButtonSecondary>
           </div>
           <div className="flex xl:hidden items-center">
             <SwitchDarkMode />
