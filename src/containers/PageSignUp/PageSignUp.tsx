@@ -18,7 +18,7 @@ const loginSocials = [
     icon: facebookSvg,
   },
   {
-    name: "Connexion avec Twitter",
+    name: "Connexion avec X",
     href: "#",
     icon: twitterSvg,
   },
