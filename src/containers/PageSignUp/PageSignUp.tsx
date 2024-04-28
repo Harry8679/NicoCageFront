@@ -13,17 +13,17 @@ export interface PageSignUpProps {
 
 const loginSocials = [
   {
-    name: "Continue with Facebook",
+    name: "Connexion avec Facebook",
     href: "#",
     icon: facebookSvg,
   },
   {
-    name: "Continue with Twitter",
+    name: "Connexion avec Twitter",
     href: "#",
     icon: twitterSvg,
   },
   {
-    name: "Continue with Google",
+    name: "Connexion avec Google",
     href: "#",
     icon: googleSvg,
   },
