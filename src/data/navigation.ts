@@ -189,7 +189,7 @@ export const NAVIGATION_DEMO: NavItemType[] = [
   {
     id: ncNanoId(),
     href: "/",
-    name: "Home",
+    name: "Accueil",
     type: "dropdown",
     children: demoChildMenus,
     isNew: true,
