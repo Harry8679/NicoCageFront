@@ -19,7 +19,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    const [showPassword, setShowPassword] = useState();
+    const [showPassword, setShowPassword] = useState<Boolean>();
     return (
       <input
         ref={ref}
