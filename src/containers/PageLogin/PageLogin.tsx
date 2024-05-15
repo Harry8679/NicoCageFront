@@ -32,8 +32,12 @@ const loginSocials = [
 ];
 
 const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState<Boolean>(false);
 
+  const handleInputChange = () => {};
+  const loginUser = () => {};
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -76,7 +80,7 @@ const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
           <form className="grid grid-cols-1 gap-6" action="#" method="post">
             <label className="block">
               <span className="text-neutral-800 dark:text-neutral-200">Email</span>
-              <Input type="email" placeholder="example@example.com" className="mt-1" />
+              <Input type="email" placeholder="example@example.com" value={email} onChange={handleInputChange} className="mt-1" />
             </label>
             <label className="block input-container">
               <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">
@@ -85,7 +89,7 @@ const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
                   Mot de passe oublié ?
                 </Link>
               </span>
-              <Input type={showPassword ? 'text':'password'} placeholder="Votre mot de passe" className="mt-1" />
+              <Input type={showPassword ? 'text':'password'} placeholder="Votre mot de passe" value={password} onChange={handleInputChange} className="mt-1" />
               <div className="icon" onClick={togglePassword}>
                 {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
               </div>
