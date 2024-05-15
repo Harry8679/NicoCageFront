@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import facebookSvg from "images/Facebook.svg";
 import twitterSvg from "images/Twitter.svg";
 import googleSvg from "images/Google.svg";
@@ -6,6 +6,8 @@ import { Helmet } from "react-helmet";
 import Input from "shared/Input/Input";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import { Link } from "react-router-dom";
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
 
 export interface PageSignUpProps {
   className?: string;
@@ -30,6 +32,11 @@ const loginSocials = [
 ];
 
 const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
+  const [showPassword, setShowPassword] = useState<Boolean>(false);
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <div className={`nc-PageSignUp  ${className}`} data-nc-id="PageSignUp">
       <Helmet>
@@ -79,13 +86,21 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
               <span className="text-neutral-800 dark:text-neutral-200">Votre Email</span>
               <Input type="email" placeholder="example@example.com" className="mt-1" />
             </label>
-            <label className="block">
+            <label className="block input-container">
               <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">Mot de passe</span>
-              <Input type="password" placeholder="Entrez votre mot de passe" className="mt-1" />
+              <Input type={showPassword ? 'text':'password'} placeholder="Votre mot de passe" className="mt-1" />
+              <div className="icon" onClick={togglePassword}>
+                {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+              </div>
+              {/* <Input type="password" placeholder="Entrez votre mot de passe" className="mt-1" /> */}
             </label>
-            <label className="block">
+            <label className="block input-container">
               <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">Confirmation du mot de passe</span>
-              <Input type="password" placeholder="Veuillez confirmer votre mot de passe" className="mt-1" />
+              <Input type={showPassword ? 'text':'password'} placeholder="Votre mot de passe" className="mt-1" />
+              <div className="icon" onClick={togglePassword}>
+                {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+              </div>
+              {/* <Input type="password" placeholder="Veuillez confirmer votre mot de passe" className="mt-1" /> */}
             </label>
             <ButtonPrimary type="submit">Inscription</ButtonPrimary>
           </form>
