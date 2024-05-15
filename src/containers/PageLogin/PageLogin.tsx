@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import facebookSvg from "images/Facebook.svg";
 import twitterSvg from "images/Twitter.svg";
 import googleSvg from "images/Google.svg";
@@ -6,6 +6,8 @@ import { Helmet } from "react-helmet";
 import Input from "shared/Input/Input";
 import { Link } from "react-router-dom";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
 
 export interface PageLoginProps {
   className?: string;
@@ -30,6 +32,11 @@ const loginSocials = [
 ];
 
 const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
+  const [showPassword, setShowPassword] = useState<Boolean>(false);
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <div className={`nc-PageLogin ${className}`} data-nc-id="PageLogin">
       <Helmet>
@@ -71,14 +78,19 @@ const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
               <span className="text-neutral-800 dark:text-neutral-200">Email</span>
               <Input type="email" placeholder="example@example.com" className="mt-1" />
             </label>
-            <label className="block">
+            <label className="block input-container">
               <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">
                 Mot de passe
                 <Link to="/forgot-pass" className="text-sm">
                   Mot de passe oublié ?
                 </Link>
               </span>
-              <Input type="password" placeholder="Votre mot de passe" className="mt-1" />
+              <Input type={showPassword ? 'text':'password'} placeholder="Votre mot de passe" className="mt-1" />
+              <div className="icon" onClick={togglePassword}>
+                {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+              </div>
+              {/* <AiFillEye onClick={togglePassword} />
+              <AiFillEyeInvisible onClick={togglePassword} /> */}
             </label>
             <ButtonPrimary type="submit">Connexion</ButtonPrimary>
           </form>
