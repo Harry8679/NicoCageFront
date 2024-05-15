@@ -8,6 +8,7 @@ import ButtonPrimary from "shared/Button/ButtonPrimary";
 import { Link } from "react-router-dom";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
+import { FaUserPlus } from "react-icons/fa";
 
 export interface PageSignUpProps {
   className?: string;
@@ -45,11 +46,11 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
   return (
     <div className={`nc-PageSignUp  ${className}`} data-nc-id="PageSignUp">
       <Helmet>
-        <title>Inscription || Booking React Template</title>
+        <title>Inscription</title>
       </Helmet>
       <div className="container mb-24 lg:mb-32">
         <h2 className="my-20 flex items-center text-3xl leading-[115%] md:text-5xl md:leading-[115%] font-semibold text-neutral-900 dark:text-neutral-100 justify-center">
-          Inscription
+          <FaUserPlus /> &nbsp; Inscription
         </h2>
         <div className="max-w-md mx-auto space-y-6 ">
           <div className="grid gap-3">

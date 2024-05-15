@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
+import { FaRegCircleUser } from "react-icons/fa6";
 
 export interface PageLoginProps {
   className?: string;
@@ -44,11 +45,11 @@ const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
   return (
     <div className={`nc-PageLogin ${className}`} data-nc-id="PageLogin">
       <Helmet>
-        <title>Connexion || Booking React Template</title>
+        <title>Connexion</title>
       </Helmet>
       <div className="container mb-24 lg:mb-32">
         <h2 className="my-20 flex items-center text-3xl leading-[115%] md:text-5xl md:leading-[115%] font-semibold text-neutral-900 dark:text-neutral-100 justify-center">
-          Connexion
+          <FaRegCircleUser /> &nbsp; Connexion
         </h2>
         <div className="max-w-md mx-auto space-y-6">
           <div className="grid gap-3">
