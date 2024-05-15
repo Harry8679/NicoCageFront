@@ -32,10 +32,15 @@ const loginSocials = [
 ];
 
 const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
-  const [showPassword, setShowPassword] = useState<Boolean>(false);
+  const [showPassword1, setShowPassword1] = useState<Boolean>(false);
+  const [showPassword2, setShowPassword2] = useState<Boolean>(false);
 
-  const togglePassword = () => {
-    setShowPassword(!showPassword);
+  const togglePassword1 = () => {
+    setShowPassword1(!showPassword1);
+  };
+
+  const togglePassword2 = () => {
+    setShowPassword2(!showPassword2);
   };
   return (
     <div className={`nc-PageSignUp  ${className}`} data-nc-id="PageSignUp">
@@ -88,17 +93,17 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
             </label>
             <label className="block input-container">
               <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">Mot de passe</span>
-              <Input type={showPassword ? 'text':'password'} placeholder="Votre mot de passe" className="mt-1" />
-              <div className="icon" onClick={togglePassword}>
-                {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+              <Input type={showPassword1 ? 'text':'password'} placeholder="Votre mot de passe" className="mt-1" />
+              <div className="icon" onClick={togglePassword1}>
+                {showPassword1 ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
               </div>
               {/* <Input type="password" placeholder="Entrez votre mot de passe" className="mt-1" /> */}
             </label>
             <label className="block input-container">
               <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">Confirmation du mot de passe</span>
-              <Input type={showPassword ? 'text':'password'} placeholder="Votre mot de passe" className="mt-1" />
-              <div className="icon" onClick={togglePassword}>
-                {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+              <Input type={showPassword2 ? 'text':'password'} placeholder="Votre mot de passe" className="mt-1" />
+              <div className="icon" onClick={togglePassword2}>
+                {showPassword2 ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
               </div>
               {/* <Input type="password" placeholder="Veuillez confirmer votre mot de passe" className="mt-1" /> */}
             </label>
