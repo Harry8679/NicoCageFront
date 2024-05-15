@@ -78,7 +78,7 @@ const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
             <div className="absolute left-0 w-full top-1/2 transform -translate-y-1/2 border border-neutral-100 dark:border-neutral-800"></div>
           </div>
           {/* FORM */}
-          <form className="grid grid-cols-1 gap-6" action="#" method="post">
+          <form className="grid grid-cols-1 gap-6" action="#" method="post" onSubmit={loginUser}>
             <label className="block">
               <span className="text-neutral-800 dark:text-neutral-200">Email</span>
               <Input type="email" placeholder="example@example.com" value={email} onChange={handleInputChange} className="mt-1" />
