@@ -97,7 +97,6 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
               <div className="icon" onClick={togglePassword1}>
                 {showPassword1 ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
               </div>
-              {/* <Input type="password" placeholder="Entrez votre mot de passe" className="mt-1" /> */}
             </label>
             <label className="block input-container">
               <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">Confirmation du mot de passe</span>
@@ -105,7 +104,6 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
               <div className="icon" onClick={togglePassword2}>
                 {showPassword2 ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
               </div>
-              {/* <Input type="password" placeholder="Veuillez confirmer votre mot de passe" className="mt-1" /> */}
             </label>
             <ButtonPrimary type="submit">Inscription</ButtonPrimary>
           </form>

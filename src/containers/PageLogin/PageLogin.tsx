@@ -89,8 +89,6 @@ const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
               <div className="icon" onClick={togglePassword}>
                 {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
               </div>
-              {/* <AiFillEye onClick={togglePassword} />
-              <AiFillEyeInvisible onClick={togglePassword} /> */}
             </label>
             <ButtonPrimary type="submit">Connexion</ButtonPrimary>
           </form>
