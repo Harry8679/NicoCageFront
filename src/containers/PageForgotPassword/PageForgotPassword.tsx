@@ -1,42 +1,17 @@
 import React, { FC, useState } from "react";
-import facebookSvg from "images/Facebook.svg";
-import twitterSvg from "images/Twitter.svg";
-import googleSvg from "images/Google.svg";
 import { Helmet } from "react-helmet";
 import Input from "shared/Input/Input";
 import { Link } from "react-router-dom";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
-import { AiFillEye } from "react-icons/ai";
-import { AiFillEyeInvisible } from "react-icons/ai";
-import { FaRegCircleUser } from "react-icons/fa6";
+
 import { MdOutlineMailLock } from "react-icons/md";
 
 export interface PageLoginProps {
   className?: string;
 }
 
-const loginSocials = [
-  {
-    name: "Connexion avec Facebook",
-    href: "#",
-    icon: facebookSvg,
-  },
-  {
-    name: "Connexion avec X",
-    href: "#",
-    icon: twitterSvg,
-  },
-  {
-    name: "Connexion avec Google",
-    href: "#",
-    icon: googleSvg,
-  },
-];
-
-const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
+const PageForgotPassword: FC<PageLoginProps> = ({ className = "" }) => {
   const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [showPassword, setShowPassword] = useState<Boolean>(false);
 
   const handleInputChange = () => {};
   const forgotEmailUser = () => {};
@@ -58,7 +33,6 @@ const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
             </label>
             <ButtonPrimary type="submit">Envoyer</ButtonPrimary>
           </form>
-
           {/* ==== */}
           <span className="block text-center text-neutral-700 dark:text-neutral-300">
             Pas encore de compte? {` `}<Link to="/signup">Créez-en un</Link>
@@ -69,4 +43,4 @@ const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
   );
 };
 
-export default PageLogin;
+export default PageForgotPassword;
