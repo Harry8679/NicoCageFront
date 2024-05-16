@@ -51,10 +51,10 @@ export interface LocationStates {
   "/search"?: {};
   "/about"?: {};
   "/contact"?: {};
-  "/login"?: {};
+  "/connexion"?: {};
   "/mot-de-passe-oublie"?: {};
-  "/signup"?: {};
-  "/forgot-pass"?: {};
+  "/inscription"?: {};
+  // "/forgot-pass"?: {};
   "/page404"?: {};
   "/subscription"?: {};
 }

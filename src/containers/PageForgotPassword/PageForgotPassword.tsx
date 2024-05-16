@@ -35,7 +35,7 @@ const PageForgotPassword: FC<PageLoginProps> = ({ className = "" }) => {
           </form>
           {/* ==== */}
           <span className="block text-center text-neutral-700 dark:text-neutral-300">
-            Pas encore de compte? {` `}<Link to="/signup">Créez-en un</Link>
+            Pas encore de compte? {` `}<Link to="/inscription">Créez-en un</Link>
           </span>
         </div>
       </div>

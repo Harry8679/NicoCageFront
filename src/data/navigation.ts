@@ -103,12 +103,12 @@ const otherPageChildMenus: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/login",
+    href: "/connexion",
     name: "Login",
   },
   {
     id: ncNanoId(),
-    href: "/signup",
+    href: "/inscription",
     name: "Signup",
   },
   {
