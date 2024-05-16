@@ -126,33 +126,8 @@ const otherPageChildMenus: NavItemType[] = [
 const myProfile: NavItemType[] = [
   {
     id: ncNanoId(),
-    href: "/blog",
-    name: "Blog Page",
-  },
-  {
-    id: ncNanoId(),
-    href: "/blog-single",
-    name: "Blog Single",
-  },
-  {
-    id: ncNanoId(),
-    href: "/about",
-    name: "About",
-  },
-  {
-    id: ncNanoId(),
-    href: "/contact",
-    name: "Contact us",
-  },
-  {
-    id: ncNanoId(),
-    href: "/connexion",
-    name: "Login",
-  },
-  {
-    id: ncNanoId(),
-    href: "/inscription",
-    name: "Signup",
+    href: "/reinitialisez-votre-mot-de-passe/:resetToken",
+    name: "Réinitialisez votre mot de passe",
   },
 ]
 
@@ -224,21 +199,21 @@ const templatesChildrenMenus: NavItemType[] = [
 ];
 
 export const NAVIGATION_DEMO: NavItemType[] = [
-  {
+  /* {
     id: ncNanoId(),
     href: "/",
     name: "Accueil",
     type: "dropdown",
     children: demoChildMenus,
     isNew: true,
-  },
-  {
+  },*/
+  /* {
     id: ncNanoId(),
     href: "/unique_id_",
     name: "Five columns",
     type: "megaMenu",
     megaMenu: megaMenuDemo,
-  },
+  },*/
   {
     id: ncNanoId(),
     href: "/listing-stay",
@@ -348,9 +323,9 @@ export const NAVIGATION_DEMO: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/blog",
+    href: "/profile",
     name: "Harry MacCode",
     type: "dropdown",
-    children: otherPageChildMenus,
+    children: myProfile,
   },
 ];
