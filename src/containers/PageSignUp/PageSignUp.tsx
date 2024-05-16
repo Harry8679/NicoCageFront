@@ -9,6 +9,9 @@ import { Link } from "react-router-dom";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { FaUserPlus } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
+import { IconType } from "react-icons";
 
 export interface PageSignUpProps {
   className?: string;
@@ -47,7 +50,25 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
   const [formData, setFormData] = useState(initialState);
   const { firstName, lastName, email, password1, password2 } = formData;
 
-  const handleChange = () => {};
+  const [uCase, setUCase] = useState(false);
+  const [num, setNum] = useState(false);
+  const [sChar, setSChar] = useState(false);
+  const [passLength, setPassLength] = useState(false);
+
+  const checkIcon = <FaCheck color="green" />;
+  const timesIcon = <ImCross color="red" />;
+
+  const switchIcon = (condition: Boolean) => {
+    if (condition) {
+      return checkIcon;
+    }
+    return timesIcon;
+  }
+
+  const handleChange = (e: { target: HTMLInputElement; }) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const togglePassword1 = () => {
     setShowPassword1(!showPassword1);
@@ -121,6 +142,21 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
                 {showPassword2 ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
               </div>
             </label>
+            <div className="block max-w-lg p-2 text-xs bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+              <div className="flex">
+                {switchIcon(uCase)} &nbsp; <span>Doit contenir au moins une Majuscule et une Minuscule</span>
+              </div>
+              <div className="flex">
+                {switchIcon(num)} &nbsp; <span>Doit contenir au moins un chiffre compris entre 0 et 9 (0-9)</span>
+              </div>
+              <div className="flex">
+                {switchIcon(sChar)} &nbsp; <span>Doit contenir au moins un caractère spécial (!@#$%^&*)</span>
+              </div>
+              <div className="flex">
+                {switchIcon(passLength)} &nbsp; <span>Doit contenir au moins 6 caractères</span>
+              </div>
+              {/* <ImCross color="red" /> Another test */}
+            </div>
             <ButtonPrimary type="submit">Inscription</ButtonPrimary>
           </form>
 
