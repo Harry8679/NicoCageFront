@@ -113,10 +113,48 @@ const otherPageChildMenus: NavItemType[] = [
   },
   {
     id: ncNanoId(),
+    href: "/reinitialisez-votre-mot-de-passe/:resetToken",
+    name: "Reset Token",
+  },
+  {
+    id: ncNanoId(),
     href: "/subscription",
     name: "Subscription",
   },
 ];
+
+const myProfile: NavItemType[] = [
+  {
+    id: ncNanoId(),
+    href: "/blog",
+    name: "Blog Page",
+  },
+  {
+    id: ncNanoId(),
+    href: "/blog-single",
+    name: "Blog Single",
+  },
+  {
+    id: ncNanoId(),
+    href: "/about",
+    name: "About",
+  },
+  {
+    id: ncNanoId(),
+    href: "/contact",
+    name: "Contact us",
+  },
+  {
+    id: ncNanoId(),
+    href: "/connexion",
+    name: "Login",
+  },
+  {
+    id: ncNanoId(),
+    href: "/inscription",
+    name: "Signup",
+  },
+]
 
 const templatesChildrenMenus: NavItemType[] = [
   {
@@ -305,6 +343,13 @@ export const NAVIGATION_DEMO: NavItemType[] = [
     id: ncNanoId(),
     href: "/blog",
     name: "Other pages",
+    type: "dropdown",
+    children: otherPageChildMenus,
+  },
+  {
+    id: ncNanoId(),
+    href: "/blog",
+    name: "Harry MacCode",
     type: "dropdown",
     children: otherPageChildMenus,
   },

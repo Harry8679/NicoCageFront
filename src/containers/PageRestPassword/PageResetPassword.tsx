@@ -11,28 +11,11 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import { FaUserPlus } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
+import { MdOutlineLockReset } from "react-icons/md";
 
 export interface PageSignUpProps {
   className?: string;
 }
-
-const loginSocials = [
-  {
-    name: "Connexion avec Facebook",
-    href: "#",
-    icon: facebookSvg,
-  },
-  {
-    name: "Connexion avec X",
-    href: "#",
-    icon: twitterSvg,
-  },
-  {
-    name: "Connexion avec Google",
-    href: "#",
-    icon: googleSvg,
-  },
-];
 
 const initialState = {
   firstName: '',
@@ -42,12 +25,12 @@ const initialState = {
   password2: '',
 };
 
-const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
+const PageResetPassword: FC<PageSignUpProps> = ({ className = "" }) => {
   const [showPassword1, setShowPassword1] = useState<Boolean>(false);
   const [showPassword2, setShowPassword2] = useState<Boolean>(false);
 
   const [formData, setFormData] = useState(initialState);
-  const { firstName, lastName, email, password1, password2 } = formData;
+  const { password1, password2 } = formData;
 
   const [uCase, setUCase] = useState(false);
   const [num, setNum] = useState(false);
@@ -107,56 +90,19 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
     setShowPassword2(!showPassword2);
   };
 
-  const registerUser = () => {}
+  const resetPassword = () => {}
   return (
     <div className={`nc-PageSignUp  ${className}`} data-nc-id="PageSignUp">
       <Helmet>
-        <title>Inscription</title>
+        <title>Réinitialiser votre mot de passe</title>
       </Helmet>
       <div className="container mb-24 lg:mb-32">
         <h2 className="my-20 flex items-center text-3xl leading-[115%] md:text-5xl md:leading-[115%] font-semibold text-neutral-900 dark:text-neutral-100 justify-center">
-          <FaUserPlus /> &nbsp; Inscription
+          <MdOutlineLockReset /> &nbsp; Réinitialisation mot de passe
         </h2>
         <div className="max-w-md mx-auto space-y-6 ">
-          <div className="grid gap-3">
-            {loginSocials.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className="nc-will-change-transform flex w-full rounded-lg bg-primary-50 dark:bg-neutral-800 px-4 py-3 transform transition-transform sm:px-6 hover:translate-y-[-2px]"
-              >
-                <img
-                  className="flex-shrink-0"
-                  src={item.icon}
-                  alt={item.name}
-                />
-                <h3 className="flex-grow text-center text-sm font-medium text-neutral-700 dark:text-neutral-300 sm:text-sm">
-                  {item.name}
-                </h3>
-              </a>
-            ))}
-          </div>
-          {/* OR */}
-          <div className="relative text-center">
-            <span className="relative z-10 inline-block px-4 font-medium text-sm bg-white dark:text-neutral-400 dark:bg-neutral-900">
-              OU
-            </span>
-            <div className="absolute left-0 w-full top-1/2 transform -translate-y-1/2 border border-neutral-100 dark:border-neutral-800"></div>
-          </div>
           {/* FORM */}
-          <form className="grid grid-cols-1 gap-6" action="#" method="post" onSubmit={registerUser}>
-          <label className="block">
-              <span className="text-neutral-800 dark:text-neutral-200">Votre Nom</span>
-              <Input type="text" placeholder="Veuillez renseigner votre nom" name="lastName" value={lastName} onChange={handleChange} className="mt-1" />
-            </label>
-            <label className="block">
-              <span className="text-neutral-800 dark:text-neutral-200">Votre Prénom</span>
-              <Input type="text" placeholder="Veuillez renseigner votre prénom" name="firstName" value={firstName} onChange={handleChange} className="mt-1" />
-            </label>
-            <label className="block">
-              <span className="text-neutral-800 dark:text-neutral-200">Votre Email</span>
-              <Input type="email" placeholder="example@example.com" name="email" value={email} onChange={handleChange} className="mt-1" />
-            </label>
+          <form className="grid grid-cols-1 gap-6" action="#" method="post" onSubmit={resetPassword}>
             <label className="block input-container">
               <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">Mot de passe</span>
               <Input type={showPassword1 ? 'text':'password'} placeholder="Votre mot de passe" name="password1" value={password1} onChange={handleChange} className="mt-1" />
@@ -184,9 +130,8 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
               <div className="flex">
                 {switchIcon(passLength)} &nbsp; <span>Doit contenir au moins 6 caractères</span>
               </div>
-              {/* <ImCross color="red" /> Another test */}
             </div>
-            <ButtonPrimary type="submit">Inscription</ButtonPrimary>
+            <ButtonPrimary type="submit">Valider</ButtonPrimary>
           </form>
 
           {/* ==== */}
@@ -199,4 +144,4 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
   );
 };
 
-export default PageSignUp;
+export default PageResetPassword;

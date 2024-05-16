@@ -184,11 +184,9 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
               <div className="flex">
                 {switchIcon(passLength)} &nbsp; <span>Doit contenir au moins 6 caractères</span>
               </div>
-              {/* <ImCross color="red" /> Another test */}
             </div>
             <ButtonPrimary type="submit">Inscription</ButtonPrimary>
           </form>
-
           {/* ==== */}
           <span className="block text-center text-neutral-700 dark:text-neutral-300">
             Avez-vous déjà un compte? {` `}<Link to="/connexion">Connectez-vous</Link>
