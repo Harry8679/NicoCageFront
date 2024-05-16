@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import facebookSvg from "images/Facebook.svg";
 import twitterSvg from "images/Twitter.svg";
 import googleSvg from "images/Google.svg";
@@ -11,7 +11,6 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import { FaUserPlus } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import { IconType } from "react-icons";
 
 export interface PageSignUpProps {
   className?: string;
@@ -70,6 +69,36 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  useEffect(() => {
+    // Check Lowercase and Uppercase
+    if (password1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+        setUCase(true);
+    } else {
+        setUCase(false);
+    }
+
+    // Check for numbers
+    if (password1.match(/([0-9])/)) {
+        setNum(true)
+    } else {
+        setNum(false)
+    }
+
+    // Check for the special characters
+    if (password1.match(/([!,@,#,$,%,^,&,*,_,~])/)) {
+        setSChar(true);
+    } else {
+        setSChar(false);
+    }
+
+    // Check for PASSWORD LENGTH
+    if (password1.length > 5) {
+        setPassLength(true);
+    } else {
+        setPassLength(false);
+    }
+  }, [password1]);
+
   const togglePassword1 = () => {
     setShowPassword1(!showPassword1);
   };
@@ -118,26 +147,26 @@ const PageSignUp: FC<PageSignUpProps> = ({ className = "" }) => {
           <form className="grid grid-cols-1 gap-6" action="#" method="post" onSubmit={registerUser}>
           <label className="block">
               <span className="text-neutral-800 dark:text-neutral-200">Votre Nom</span>
-              <Input type="text" placeholder="Veuillez renseigner votre nom" value={lastName} onChange={handleChange} className="mt-1" />
+              <Input type="text" placeholder="Veuillez renseigner votre nom" name="lastName" value={lastName} onChange={handleChange} className="mt-1" />
             </label>
             <label className="block">
               <span className="text-neutral-800 dark:text-neutral-200">Votre Prénom</span>
-              <Input type="text" placeholder="Veuillez renseigner votre prénom" value={firstName} onChange={handleChange} className="mt-1" />
+              <Input type="text" placeholder="Veuillez renseigner votre prénom" name="firstName" value={firstName} onChange={handleChange} className="mt-1" />
             </label>
             <label className="block">
               <span className="text-neutral-800 dark:text-neutral-200">Votre Email</span>
-              <Input type="email" placeholder="example@example.com" value={email} onChange={handleChange} className="mt-1" />
+              <Input type="email" placeholder="example@example.com" name="email" value={email} onChange={handleChange} className="mt-1" />
             </label>
             <label className="block input-container">
               <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">Mot de passe</span>
-              <Input type={showPassword1 ? 'text':'password'} placeholder="Votre mot de passe" value={password1} onChange={handleChange} className="mt-1" />
+              <Input type={showPassword1 ? 'text':'password'} placeholder="Votre mot de passe" name="password1" value={password1} onChange={handleChange} className="mt-1" />
               <div className="icon" onClick={togglePassword1}>
                 {showPassword1 ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
               </div>
             </label>
             <label className="block input-container">
               <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">Confirmation du mot de passe</span>
-              <Input type={showPassword2 ? 'text':'password'} placeholder="Confirmez votre mot de passe" value={password2} onChange={handleChange} className="mt-1" />
+              <Input type={showPassword2 ? 'text':'password'} placeholder="Confirmez votre mot de passe" name="password2" value={password2} onChange={handleChange} className="mt-1" />
               <div className="icon" onClick={togglePassword2}>
                 {showPassword2 ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
               </div>
