@@ -3,11 +3,11 @@ import CarCard from "components/CarCard/CarCard";
 import CommentListing from "components/CommentListing/CommentListing";
 import ExperiencesCard from "components/ExperiencesCard/ExperiencesCard";
 import StartRating from "components/StartRating/StartRating";
-import StayCard from "components/StayCard/StayCard";
+// import StayCard from "components/StayCard/StayCard";
 import {
   DEMO_CAR_LISTINGS,
   DEMO_EXPERIENCES_LISTINGS,
-  DEMO_STAY_LISTINGS,
+  // DEMO_STAY_LISTINGS,
 } from "data/listings";
 import React, { FC, Fragment, useState } from "react";
 import Avatar from "shared/Avatar/Avatar";
@@ -121,7 +121,30 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
     );
   };
 
-  const renderSection1 = () => {
+  interface ProfileProps {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    bio: string;
+    role: string;
+    isVerified: boolean;
+  }
+
+  const initialState = {
+    firstName: 'Harry',
+    lastName: 'MacCode',
+    email: 'harry.maccode@lhlp.fr',
+    phone: '+1 234 234 234 234',
+    bio: 'Parmi les enfants des hommes, il en est un seul Seigneur. Qui sur la terre où nous sommes t\'a servi de tout son coeur.',
+    role: 'user',
+    isVerified: false
+  }
+
+  const RenderSection1 = () => {
+    const [profile, setProfile] = useState<ProfileProps>(initialState);
+    const { firstName, lastName, email, phone, bio } = profile;
+    const inputHandleChange = () => {};
     return (
       <div className="listingSection__wrap">
         <div>
@@ -155,32 +178,37 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
             <Tab.Panels>
               <Tab.Panel className="">
               <form className="grid grid-cols-1 gap-6" action="#" method="post">
+              {/* <label className="block">
+                  <Label>Avatar</Label>
+                  <Input type="file" className="mt-1" name="image" accept="image/*" />
+                </label> */}
+                
                 <label className="block">
                   <Label>Nom</Label>
-                  <Input placeholder="MacCode" type="text" className="mt-1 input-disabled" />
+                  <Input placeholder="MacCode" type="text" className="mt-1 input-disabled" disabled value={lastName} />
                 </label>
 
                 <label className="block">
                   <Label>Prénom</Label>
-                  <Input placeholder="Harry" type="text" className="mt-1" />
+                  <Input placeholder="Harry" type="text" className="mt-1 input-disabled" disabled value={firstName} />
                 </label>
 
                 <label className="block">
-                  <Label>Email address</Label>
-
-                  <Input
-                    type="email"
-                    placeholder="example@example.com"
-                    className="mt-1"
-                  />
+                  <Label>Email</Label>
+                  <Input type="email" placeholder="example@example.com" className="mt-1 input-disabled" disabled value={email} />
                 </label>
-                <label className="block">
-                  <Label>Message</Label>
 
-                  <Textarea className="mt-1" rows={6} />
+                <label className="block">
+                  <Label>Phone</Label>
+                  <Input type="email" placeholder="example@example.com" className="mt-1" value={phone} onChange={inputHandleChange} />
+                </label>
+
+                <label className="block">
+                  <Label>Biographie</Label>
+                  <Textarea className="mt-1" rows={6} value={bio} onChange={inputHandleChange} />
                 </label>
                 <div>
-                  <ButtonPrimary type="submit">Send Message</ButtonPrimary>
+                  <ButtonPrimary type="submit">Modifier votre Profil</ButtonPrimary>
                 </div>
               </form>
                 {/* <div className="mt-8 grid grid-cols-1 gap-6 md:gap-7 sm:grid-cols-2">
@@ -252,7 +280,7 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
           <div className="lg:sticky lg:top-24">{renderSidebar()}</div>
         </div>
         <div className="w-full lg:w-3/5 xl:w-2/3 space-y-8 lg:space-y-10 lg:pl-10 flex-shrink-0">
-          {renderSection1()}
+          {RenderSection1()}
           {renderSection2()}
         </div>
       </main>
