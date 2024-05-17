@@ -22,6 +22,7 @@ import PageContact from "containers/PageContact/PageContact";
 import PageAbout from "containers/PageAbout/PageAbout";
 import PageSignUp from "containers/PageSignUp/PageSignUp";
 import PageLogin from "containers/PageLogin/PageLogin";
+import PageEnterAccessCode from "containers/PageEnterAccessCode/PageEnterAccessCode";
 import PageResetPassword from "containers/PageRestPassword/PageResetPassword";
 import PageForgotPassword from "containers/PageForgotPassword/PageForgotPassword";
 import PageSubcription from "containers/PageSubcription/PageSubcription";
@@ -110,6 +111,7 @@ export const pages: Page[] = [
   { path: "/inscription", component: PageSignUp },
   { path: "/connexion", component: PageLogin },
   { path: "/reinitialisez-votre-mot-de-passe/:resetToken", component: PageResetPassword },
+  { path: "/connexion-avec-code/:email", component: PageEnterAccessCode },
   { path: "/mot-de-passe-oublie", component: PageForgotPassword },
   { path: "/subscription", component: PageSubcription },
   //

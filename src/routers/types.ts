@@ -53,6 +53,7 @@ export interface LocationStates {
   "/contact"?: {};
   "/connexion"?: {};
   "/reinitialisez-votre-mot-de-passe/:resetToken"?: {};
+  "/connexion-avec-code/:email"?: {};
   "/mot-de-passe-oublie"?: {};
   "/inscription"?: {};
   // "/forgot-pass"?: {};

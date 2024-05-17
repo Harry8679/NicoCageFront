@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import facebookSvg from "images/Facebook.svg";
 import twitterSvg from "images/Twitter.svg";
 import googleSvg from "images/Google.svg";
+import codeSvg from "images/Apple.svg";
 import { Helmet } from "react-helmet";
 import Input from "shared/Input/Input";
 import { Link } from "react-router-dom";
@@ -30,6 +31,11 @@ const loginSocials = [
     href: "#",
     icon: googleSvg,
   },
+  {
+    name: "Connexion avec Code",
+    href: "/connexion-avec-code/emarh@test.fr",
+    icon: codeSvg,
+  }
 ];
 
 const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
@@ -100,7 +106,7 @@ const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
 
           {/* ==== */}
           <span className="block text-center text-neutral-700 dark:text-neutral-300">
-            Pas encore de compte? {` `}<Link to="/inscription">Créez-en un</Link>
+            Pas encore de compte? {` `}<Link to="/signup">Créez-en un</Link>
           </span>
         </div>
       </div>
