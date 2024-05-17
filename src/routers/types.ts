@@ -57,6 +57,7 @@ export interface LocationStates {
   "/verification/:verificationToken"?: {};
   "/mot-de-passe-oublie"?: {};
   "/inscription"?: {};
+  "/profil"?: {};
   // "/forgot-pass"?: {};
   "/page404"?: {};
   "/subscription"?: {};

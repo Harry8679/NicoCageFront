@@ -14,6 +14,7 @@ import ListingCarMapPage from "containers/ListingCarPage/ListingCarMapPage";
 import CheckOutPage from "containers/CheckOutPage/CheckOutPage";
 import PayPage from "containers/PayPage/PayPage";
 import AuthorPage from "containers/AuthorPage/AuthorPage";
+// import ProfilePage from "containers/ProfilePage/ProfilePage";
 import AccountPage from "containers/AccountPage/AccountPage";
 import AccountPass from "containers/AccountPage/AccountPass";
 import AccountSavelists from "containers/AccountPage/AccountSavelists";
@@ -26,6 +27,7 @@ import PageEnterAccessCode from "containers/PageEnterAccessCode/PageEnterAccessC
 import PageVerify from "containers/PageVerify/PageVerify";
 import PageResetPassword from "containers/PageRestPassword/PageResetPassword";
 import PageForgotPassword from "containers/PageForgotPassword/PageForgotPassword";
+import PageProfile from "containers/PageProfile/ProfilePage";
 import PageSubcription from "containers/PageSubcription/PageSubcription";
 import BlogPage from "containers/BlogPage/BlogPage";
 import BlogSingle from "containers/BlogPage/BlogSingle";
@@ -115,6 +117,7 @@ export const pages: Page[] = [
   { path: "/connexion-avec-code/:email", component: PageEnterAccessCode },
   { path: "/verification/:verificationToken", component: PageVerify },
   { path: "/mot-de-passe-oublie", component: PageForgotPassword },
+  { path: "/profil", component: PageProfile },
   { path: "/subscription", component: PageSubcription },
   //
 ];

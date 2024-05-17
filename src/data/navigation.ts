@@ -129,6 +129,11 @@ const myProfile: NavItemType[] = [
     href: "/reinitialisez-votre-mot-de-passe/:resetToken",
     name: "Réinitialisez votre mot de passe",
   },
+  {
+    id: ncNanoId(),
+    href: "/profil",
+    name: "Mon Profil",
+  },
 ]
 
 const templatesChildrenMenus: NavItemType[] = [
