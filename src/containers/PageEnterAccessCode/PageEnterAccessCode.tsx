@@ -13,7 +13,9 @@ const PageEnterAccessCode: FC<PageEnterAccessCodeProps> = ({ className = "" }) =
   const [accessCode, setAccessCode] = useState<string>('');
 
   const handleInputChange = () => {};
-  const accessCodeUser = () => {};
+  const accessCodeUser = (e: any) => {
+    setAccessCode(e.target.value);
+  };
 
   return (
     <div className={`nc-PageLogin ${className}`} data-nc-id="PageLogin">
