@@ -9,7 +9,7 @@ import {
   DEMO_EXPERIENCES_LISTINGS,
   // DEMO_STAY_LISTINGS,
 } from "data/listings";
-import React, { FC, Fragment, useState } from "react";
+import React, { FC, Fragment, useState, useEffect } from "react";
 import Avatar from "shared/Avatar/Avatar";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 import SocialsList from "shared/SocialsList/SocialsList";
@@ -19,6 +19,10 @@ import Label from "components/Label/Label";
 import Input from "shared/Input/Input";
 import Textarea from "shared/Textarea/Textarea";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
+import { FaCheck } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
 
 export interface AuthorPageProps {
   className?: string;
@@ -141,10 +145,91 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
     isVerified: false
   }
 
+  const initialState2 = {
+    password0: '',
+    password1: '',
+    password2: '',
+  };
+
+  interface updatePasswordProps {
+    password0: string;
+    password1: string;
+    password2: string;
+}
+
   const RenderSection1 = () => {
     const [profile, setProfile] = useState<ProfileProps>(initialState);
     const { firstName, lastName, email, phone, bio } = profile;
     const inputHandleChange = () => {};
+
+    const [showPassword0, setShowPassword0] = useState<Boolean>(false);
+    const [showPassword1, setShowPassword1] = useState<Boolean>(false);
+  const [showPassword2, setShowPassword2] = useState<Boolean>(false);
+
+  const [formData, setFormData] = useState<updatePasswordProps>(initialState2);
+  const { password0 ,password1, password2 } = formData;
+
+  const [uCase, setUCase] = useState(false);
+  const [num, setNum] = useState(false);
+  const [sChar, setSChar] = useState(false);
+  const [passLength, setPassLength] = useState(false);
+
+  const checkIcon = <FaCheck color="green" />;
+  const timesIcon = <ImCross color="red" />;
+
+  const switchIcon = (condition: Boolean) => {
+    if (condition) {
+      return checkIcon;
+    }
+    return timesIcon;
+  }
+
+  const handleChangeUpdatePassword = (e: { target: HTMLInputElement; }) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  useEffect(() => {
+    // Check Lowercase and Uppercase
+    if (password1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+        setUCase(true);
+    } else {
+        setUCase(false);
+    }
+
+    // Check for numbers
+    if (password1.match(/([0-9])/)) {
+        setNum(true)
+    } else {
+        setNum(false)
+    }
+
+    // Check for the special characters
+    if (password1.match(/([!,@,#,$,%,^,&,*,_,~])/)) {
+        setSChar(true);
+    } else {
+        setSChar(false);
+    }
+
+    // Check for PASSWORD LENGTH
+    if (password1.length > 5) {
+        setPassLength(true);
+    } else {
+        setPassLength(false);
+    }
+  }, [password1]);
+
+  const togglePassword0 = () => {
+    setShowPassword0(!showPassword0);
+  };
+  
+  const togglePassword1 = () => {
+    setShowPassword1(!showPassword1);
+  };
+
+  const togglePassword2 = () => {
+    setShowPassword2(!showPassword2);
+  };
     return (
       <div className="listingSection__wrap">
         <div>
@@ -178,11 +263,6 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
             <Tab.Panels>
               <Tab.Panel className="">
               <form className="grid grid-cols-1 gap-6" action="#" method="post">
-              {/* <label className="block">
-                  <Label>Avatar</Label>
-                  <Input type="file" className="mt-1" name="image" accept="image/*" />
-                </label> */}
-                
                 <label className="block">
                   <Label>Nom</Label>
                   <Input placeholder="MacCode" type="text" className="mt-1 input-disabled" disabled value={lastName} />
@@ -211,26 +291,51 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
                   <ButtonPrimary type="submit">Modifier votre Profil</ButtonPrimary>
                 </div>
               </form>
-                {/* <div className="mt-8 grid grid-cols-1 gap-6 md:gap-7 sm:grid-cols-2">
-                  {DEMO_STAY_LISTINGS.filter((_, i) => i < 4).map((stay) => (
-                    <StayCard key={stay.id} data={stay} />
-                  ))}
-                </div>
-                <div className="flex mt-11 justify-center items-center">
-                  <ButtonSecondary>Show me more</ButtonSecondary>
-                </div> */}
               </Tab.Panel>
               <Tab.Panel className="">
-                <div className="mt-8 grid grid-cols-1 gap-6 md:gap-7 sm:grid-cols-2">
-                  {DEMO_EXPERIENCES_LISTINGS.filter((_, i) => i < 4).map(
-                    (stay) => (
-                      <ExperiencesCard key={stay.id} data={stay} />
-                    )
-                  )}
+              <form className="grid grid-cols-1 gap-6" action="#" method="post">
+              <label className="block input-container">
+              <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">Mot de passe actuel</span>
+              <Input type={showPassword0 ? 'text':'password'} placeholder="Votre mot de passe" name="password0" value={password0} onChange={handleChangeUpdatePassword} className="mt-1" />
+              <div className="icon" onClick={togglePassword0}>
+                {showPassword0 ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+              </div>
+              </label>
+
+              <label className="block input-container">
+              <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">Mot de passe</span>
+              <Input type={showPassword1 ? 'text':'password'} placeholder="Votre mot de passe" name="password1" value={password1} onChange={handleChangeUpdatePassword} className="mt-1" />
+              <div className="icon" onClick={togglePassword1}>
+                {showPassword1 ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+              </div>
+              </label>
+
+              <label className="block input-container">
+                <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">Confirmation du mot de passe</span>
+                <Input type={showPassword2 ? 'text':'password'} placeholder="Confirmez votre mot de passe" name="password2" value={password2} onChange={handleChangeUpdatePassword} className="mt-1" />
+                <div className="icon" onClick={togglePassword2}>
+                  {showPassword2 ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
                 </div>
-                <div className="flex mt-11 justify-center items-center">
-                  <ButtonSecondary>Show me more</ButtonSecondary>
+              </label>
+
+              <div className="block max-w-lg p-2 text-xs bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div className="flex">
+                  {switchIcon(uCase)} &nbsp; <span>Doit contenir au moins une Majuscule et une Minuscule</span>
                 </div>
+                <div className="flex">
+                  {switchIcon(num)} &nbsp; <span>Doit contenir au moins un chiffre compris entre 0 et 9 (0-9)</span>
+                </div>
+                <div className="flex">
+                  {switchIcon(sChar)} &nbsp; <span>Doit contenir au moins un caractère spécial (!@#$%^&*)</span>
+                </div>
+                <div className="flex">
+                  {switchIcon(passLength)} &nbsp; <span>Doit contenir au moins 6 caractères</span>
+                </div>
+              </div>
+                <div>
+                  <ButtonPrimary type="submit">Modifier votre Mot de Passe</ButtonPrimary>
+                </div>
+              </form>
               </Tab.Panel>
               <Tab.Panel className="">
                 <div className="mt-8 grid grid-cols-1 gap-6 md:gap-7 sm:grid-cols-2">
