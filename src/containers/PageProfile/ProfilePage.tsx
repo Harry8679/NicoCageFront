@@ -235,8 +235,7 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
         <div>
           <h2 className="text-2xl font-semibold">Profile de Harry MacCode</h2>
           <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            Kevin Francis's listings is very rich, 5 star reviews help him to be
-            more branded.
+            Bienvenue sur votre espace où vous pouvez voir et modifier votre profil, modifier votre mot de passe et voir vos trajets.
           </span>
         </div>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
